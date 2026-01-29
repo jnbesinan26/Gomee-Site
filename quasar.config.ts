@@ -49,7 +49,7 @@ export default defineConfig((/* ctx */) => {
         // extendTsConfig (tsConfig) {}
       },
 
-      vueRouterMode: 'history', // available values: 'hash', 'history'
+      vueRouterMode: 'hash', // available values: 'hash', 'history'
       // vueRouterBase,
       // vueDevtools,
       // vueOptionsAPI: false,
@@ -57,6 +57,8 @@ export default defineConfig((/* ctx */) => {
       // rebuildCache: true, // rebuilds Vite/linter/etc cache on startup
 
       publicPath: '/Gomee-Site/',
+      htmlFilename: 'index.html',
+      productName: 'Gomee-Site',
       // analyze: true,
       // env: {},
       // rawDefine: {}
