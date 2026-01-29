@@ -58,7 +58,6 @@ export default defineConfig((/* ctx */) => {
 
       publicPath: '/',
       htmlFilename: 'index.html',
-      productName: 'Gomee',
       // analyze: true,
       // env: {},
       // rawDefine: {}

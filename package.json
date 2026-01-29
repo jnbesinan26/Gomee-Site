@@ -1,8 +1,8 @@
 {
   "name": "gomee-site",
   "version": "0.0.1",
-  "description": "Official landing page for Gomee — static SPA built with Quasar Framework (Vue 3) including Home, Contact, and Privacy pages.",
-  "productName": "GOMEE",
+  "description": "Connecting users and vendors made easy!",
+  "productName": "Gomee",
   "author": "jonathan besinan <jonathan.besinan@gmail.com>",
   "type": "module",
   "private": true,
