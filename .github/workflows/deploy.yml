@@ -1,0 +1,39 @@
+name: Deploy Quasar SPA to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # Change if your default branch is different
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1️⃣ Checkout the repo
+      - uses: actions/checkout@v3
+
+      # 2️⃣ Setup Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      # 3️⃣ Install pnpm and dependencies
+      - name: Install dependencies
+        run: npm install -g pnpm && pnpm install
+
+      # 4️⃣ Build Quasar app
+      - name: Build Quasar SPA
+        run: pnpm quasar build
+
+      # 5️⃣ Add CNAME for custom domain
+      - name: Add CNAME
+        run: echo "www.gomee.app" > ./dist/spa/CNAME
+
+      # 6️⃣ Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist/spa
