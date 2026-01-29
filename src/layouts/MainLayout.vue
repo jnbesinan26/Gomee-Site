@@ -125,12 +125,6 @@ const scrollToFeatures = async () => {
     await scrollToSection('features');
   }
 };
-
-const scrollToContact = async () => {
-  // Small delay to ensure drawer closes first
-  await new Promise(resolve => setTimeout(resolve, 150));
-  scrollToSection('contact');
-};
 </script>
 
 <style scoped>
