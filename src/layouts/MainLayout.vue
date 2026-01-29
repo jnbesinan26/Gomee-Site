@@ -15,7 +15,6 @@
         <div class="gt-sm desktop-nav">
           <q-btn flat no-caps color="grey-9" label="Home" @click="scrollToTop" class="nav-btn text-weight-bold" />
           <q-btn flat no-caps color="grey-9" label="Features" @click="scrollToFeatures" class="nav-btn text-weight-bold" />
-          <q-btn flat no-caps color="grey-9" label="Contact" @click="scrollToContact" class="nav-btn text-weight-bold" />
         </div>
 
         <!-- Mobile Menu Button -->
@@ -34,11 +33,6 @@
         <q-item clickable v-close-popup @click="scrollToFeatures">
           <q-item-section>
             <q-item-label>Features</q-item-label>
-          </q-item-section>
-        </q-item>
-        <q-item clickable v-close-popup @click="scrollToContact">
-          <q-item-section>
-            <q-item-label>Contact</q-item-label>
           </q-item-section>
         </q-item>
       </q-list>
