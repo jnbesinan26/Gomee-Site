@@ -3,7 +3,7 @@ name: Deploy Quasar SPA to GitHub Pages
 on:
   push:
     branches:
-      - main  # Change if your default branch is different
+      - main
 
 jobs:
   build-and-deploy:
@@ -19,7 +19,7 @@ jobs:
         with:
           node-version: '20'
 
-      # 3️⃣ Install pnpm and dependencies
+      # 3️⃣ Install pnpm & dependencies
       - name: Install dependencies
         run: npm install -g pnpm && pnpm install
 
@@ -32,8 +32,13 @@ jobs:
         run: echo "www.gomee.app" > ./dist/spa/CNAME
 
       # 6️⃣ Deploy to GitHub Pages
-      - name: Deploy to GitHub Pages
+      - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist/spa
+          # Force overwrite any existing files
+          force_orphan: true
+          # Set Git user
+          user_name: "github-actions[bot]"
+          user_email: "github-actions[bot]@users.noreply.github.com"
