@@ -1,44 +1,55 @@
-name: Deploy Quasar SPA to GitHub Pages
+name: Deploy Quasar App
 
 on:
   push:
     branches:
-      - main
+      - main  # Change to your default branch if different (e.g., 'master')
+  workflow_dispatch:  # Allows manual triggering from Actions tab
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
-
+    
     steps:
-      # 1️⃣ Checkout the repo
-      - uses: actions/checkout@v3
-
-      # 2️⃣ Setup Node.js
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8  # Change to your pnpm version if different
+      
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: '20'
-
-      # 3️⃣ Install pnpm & dependencies
+          node-version: '23.11.0'
+          cache: 'pnpm'
+      
       - name: Install dependencies
-        run: npm install -g pnpm && pnpm install
-
-      # 4️⃣ Build Quasar app
-      - name: Build Quasar SPA
-        run: pnpm quasar build
-
-      # 5️⃣ Add CNAME for custom domain
-      - name: Add CNAME
-        run: echo "www.gomee.app" > ./dist/spa/CNAME
-
-      # 6️⃣ Deploy to GitHub Pages
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+        run: pnpm install
+      
+      - name: Build Quasar app
+        run: pnpm run build
+        env:
+          NODE_ENV: production
+      
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+      
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist/spa
-          # Force overwrite any existing files
-          force_orphan: true
-          # Set Git user
-          user_name: "github-actions[bot]"
-          user_email: "github-actions[bot]@users.noreply.github.com"
+          path: './dist/spa'  # Quasar SPA build output directory
+      
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
