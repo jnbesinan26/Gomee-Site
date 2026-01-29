@@ -6,8 +6,8 @@ const routes: RouteRecordRaw[] = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/IndexPage.vue') },
-      { path: 'privacy-policy', component: () => import('pages/PrivacyPolicy.vue') },
-      { path: 'terms', component: () => import('pages/TermsOfService.vue') },
+      { path: 'privacy-policy', component: () => import('pages/PrivacyPage.vue') },
+      { path: 'terms', component: () => import('pages/TermsPage.vue') },
     ],
   },
 
