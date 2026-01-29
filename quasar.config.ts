@@ -56,7 +56,7 @@ export default defineConfig((/* ctx */) => {
 
       // rebuildCache: true, // rebuilds Vite/linter/etc cache on startup
 
-      publicPath: '/gomee-site/',
+      publicPath: '/Gomee-Site/',
       // analyze: true,
       // env: {},
       // rawDefine: {}
