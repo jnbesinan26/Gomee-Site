@@ -1,7 +1,7 @@
 <template>
   <section class="legal-section q-mb-xl">
     <base-container>
-      <div class="text-h5 text-weight-bold text-primary q-mb-md">{{ title }}</div>
+      <div class="text-h3 text-weight-bold text-primary">{{ title }}</div>
       <slot />
     </base-container>
   </section>

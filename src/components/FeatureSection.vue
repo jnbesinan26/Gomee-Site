@@ -3,13 +3,13 @@
     <base-container>
       <div class="container">
         <div class="text-center q-mb-xl">
-          <h2 class="text-weight-bold q-mb-md text-primary section-title" :class="$q.screen.lt.sm ? 'text-h5' : 'text-h4'">Why Choose Gomee?</h2>
-          <p class="text-grey-7 section-description" :class="$q.screen.lt.sm ? 'text-body2' : 'text-body1'">
+          <h2 class="text-weight-bold q-mb-md text-primary section-title">Why Choose Gomee?</h2>
+          <p class="text-grey-7 section-description">
             Connect with your community and support local businesses
           </p>
         </div>
 
-        <div class="row" :class="$q.screen.lt.sm ? 'q-col-gutter-md' : 'q-col-gutter-xl'">
+        <div class="row q-col-gutter-md">
           <div
             v-for="feature in features"
             :key="feature.title"
@@ -19,12 +19,12 @@
               <q-card-section class="text-center">
                 <q-icon
                   :name="feature.icon"
-                  :size="$q.screen.lt.sm ? '2.5rem' : '3rem'"
+                  size="3rem"
                   class="text-primary q-mb-md feature-icon"
                 />
-                <h3 class="text-h6 text-weight-bold q-mb-sm">
+                <h4 class="text-weight-bold q-mb-sm">
                   {{ feature.title }}
-                </h3>
+                </h4>
                 <p class="text-body2 text-grey-7 q-ma-none">
                   {{ feature.description }}
                 </p>
@@ -36,8 +36,10 @@
         <!-- For Store Owners Section -->
         <div class="store-owners-section q-mt-xl q-pt-xl">
           <div class="text-center q-mb-lg">
-            <div class="text-weight-bold q-mb-md text-primary store-owners-title" :class="$q.screen.lt.sm ? 'text-h6' : 'text-h5'">For Store Owners</div>
-            <p class="text-grey-7 store-owners-description" :class="$q.screen.lt.sm ? 'text-body2' : 'text-body1'">
+            <div class="text-h2 text-weight-bold q-mb-md text-primary store-owners-title">
+              For Store Owners
+            </div>
+            <p class="text-grey-7 store-owners-description">
               Powerful tools to grow your local business
             </p>
           </div>
@@ -50,7 +52,7 @@
                     <q-icon name="check_circle" color="primary" />
                   </q-item-section>
                   <q-item-section>
-                    <q-item-label class="text-body1">{{ benefit }}</q-item-label>
+                    <q-item-label>{{ benefit }}</q-item-label>
                   </q-item-section>
                 </q-item>
               </q-list>
@@ -62,7 +64,7 @@
                     <q-icon name="check_circle" color="primary" />
                   </q-item-section>
                   <q-item-section>
-                    <q-item-label class="text-body1">{{ benefit }}</q-item-label>
+                    <q-item-label>{{ benefit }}</q-item-label>
                   </q-item-section>
                 </q-item>
               </q-list>
@@ -81,22 +83,26 @@ const features = [
   {
     icon: 'eva-map-outline',
     title: 'Discover Local Stores',
-    description: 'Find nearby businesses and explore what your community has to offer with our intelligent map system.',
+    description:
+      'Find nearby businesses and explore what your community has to offer with our intelligent map system.',
   },
   {
     icon: 'eva-message-circle-outline',
     title: 'Connect & Communicate',
-    description: 'Chat directly with store owners in real-time and build meaningful relationships with local vendors.',
+    description:
+      'Chat directly with store owners in real-time and build meaningful relationships with local vendors.',
   },
   {
     icon: 'eva-calendar-outline',
     title: 'Make Reservations',
-    description: 'Book appointments and reserve services with just a few taps. No more waiting in lines.',
+    description:
+      'Book appointments and reserve services with just a few taps. No more waiting in lines.',
   },
   {
     icon: 'eva-heart-outline',
     title: 'Support Local Business',
-    description: 'Help local entrepreneurs grow their businesses and strengthen your community economy.',
+    description:
+      'Help local entrepreneurs grow their businesses and strengthen your community economy.',
   },
 ];
 
@@ -127,16 +133,8 @@ const storeBenefits = [
     padding: 1.5rem 0;
   }
 
-  .section-title {
-    @media (max-width: 480px) {
-      font-size: 1.5rem !important;
-      line-height: 1.3 !important;
-    }
-  }
-
   .section-description {
     @media (max-width: 480px) {
-      font-size: 0.9rem !important;
       padding: 0 1rem;
     }
   }
@@ -163,24 +161,6 @@ const storeBenefits = [
         padding: 1rem;
       }
     }
-
-    h3 {
-      @media (max-width: 480px) {
-        font-size: 1.1rem !important;
-      }
-    }
-
-    p {
-      @media (max-width: 480px) {
-        font-size: 0.85rem !important;
-      }
-    }
-  }
-
-  .feature-icon {
-    @media (max-width: 480px) {
-      font-size: 2rem !important;
-    }
   }
 
   .store-owners-section {
@@ -200,15 +180,8 @@ const storeBenefits = [
       border-radius: 0.5rem;
     }
 
-    .store-owners-title {
-      @media (max-width: 480px) {
-        font-size: 1.25rem !important;
-      }
-    }
-
     .store-owners-description {
       @media (max-width: 480px) {
-        font-size: 0.9rem !important;
         padding: 0 0.5rem;
       }
     }
@@ -219,12 +192,6 @@ const storeBenefits = [
 
       @media (max-width: 600px) {
         margin-bottom: 0.75rem;
-      }
-
-      .q-item-label {
-        @media (max-width: 480px) {
-          font-size: 0.9rem !important;
-        }
       }
     }
 
