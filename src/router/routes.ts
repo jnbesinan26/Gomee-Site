@@ -10,6 +10,7 @@ const routes: RouteRecordRaw[] = [
       { path: 'terms', component: () => import('pages/TermsPage.vue') },
       { path: 'auth/action', component: () => import('pages/AuthActionPage.vue') },
       { path: 'data-deletion', component: () => import('pages/DataDeletionPage.vue') },
+      { path: 'account-deletion', component: () => import('pages/AccountDeletionPage.vue') },
     ],
   },
 
