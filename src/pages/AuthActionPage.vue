@@ -15,7 +15,7 @@
 
         <!-- Email Verified -->
         <div v-else-if="mode === 'verifyEmail' && success">
-          <q-banner class="bg-positive text-white"> Email successfully verified 🎉 </q-banner>
+          <q-banner class="bg-info text-white"> Email successfully verified 🎉 </q-banner>
         </div>
 
         <!-- Password Reset -->
