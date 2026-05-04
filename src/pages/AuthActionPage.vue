@@ -13,6 +13,14 @@
           <q-spinner size="40px" />
         </div>
 
+        <!-- Sign In — relay to app via custom URL scheme -->
+        <div v-else-if="mode === 'signIn'">
+          <q-banner class="bg-info text-white q-mb-md">
+            Opening the Gomee app... If it doesn't open automatically, tap the button below.
+          </q-banner>
+          <q-btn label="Open in Gomee App" color="primary" class="full-width" @click="openApp" />
+        </div>
+
         <!-- Email Verified -->
         <div v-else-if="mode === 'verifyEmail' && success">
           <q-banner class="bg-info text-white"> Email successfully verified 🎉 </q-banner>
@@ -73,12 +81,34 @@ const newPassword = ref('');
 
 const mode = route.query.mode as string | undefined;
 const oobCode = route.query.oobCode as string | undefined;
+const apiKey = route.query.apiKey as string | undefined;
+const lang = route.query.lang as string | undefined;
 
 const title = ref('Processing...');
+
+function buildAppUrl(): string {
+  const params = new URLSearchParams();
+  if (oobCode) params.set('oobCode', oobCode);
+  if (apiKey) params.set('apiKey', apiKey);
+  params.set('mode', mode ?? 'signIn');
+  if (lang) params.set('lang', lang);
+  return `ph.devao.gomee.app://auth?${params.toString()}`;
+}
+
+function openApp(): void {
+  window.location.href = buildAppUrl();
+}
 
 onMounted(async () => {
   if (!mode || !oobCode) {
     errorMessage.value = 'Invalid action link.';
+    loading.value = false;
+    return;
+  }
+
+  if (mode === 'signIn') {
+    title.value = 'Opening Gomee App...';
+    openApp();
     loading.value = false;
     return;
   }
